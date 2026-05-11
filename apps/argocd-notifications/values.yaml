@@ -1,0 +1,66 @@
+notifications:
+            "fields": [
+              {
+                "title": "Sync Status",
+                "value": "{{ .app.status.sync.status }}",
+                "short": true
+              },
+              {
+                "title": "Health",
+                "value": "{{ .app.status.health.status }}",
+                "short": true
+              },
+              {
+                "title": "Revision",
+                "value": "{{ .app.status.sync.revision }}",
+                "short": true
+              },
+              {
+                "title": "Images",
+                "value": "{{ range .app.status.summary.images }}• {{ . }}\\n{{ end }}",
+                "short": false
+              }
+            ]
+          }]
+
+    template.app-sync-failed: |
+      slack:
+        attachments: |
+          [{
+            "color": "#E96D76",
+            "title": "{{ .app.metadata.name }} sync failed",
+            "title_link": "{{ .context.argocdUrl }}/applications/{{ .app.metadata.name }}",
+            "fields": [
+              {
+                "title": "Sync Status",
+                "value": "{{ .app.status.sync.status }}",
+                "short": true
+              },
+              {
+                "title": "Revision",
+                "value": "{{ .app.status.sync.revision }}",
+                "short": true
+              }
+            ]
+          }]
+
+  triggers:
+    trigger.on-sync-succeeded: |
+      - description: Application synced successfully
+        oncePer: app.status.sync.revision
+        send:
+          - app-sync-succeeded
+        when: app.status.operationState.phase in ['Succeeded']
+
+    trigger.on-sync-failed: |
+      - description: Application sync failed
+        send:
+          - app-sync-failed
+        when: app.status.operationState.phase in ['Error', 'Failed']
+
+  subscriptions:
+    - recipients:
+        - slack:deployments
+      triggers:
+        - on-sync-succeeded
+        - on-sync-failed
