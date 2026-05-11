@@ -4,7 +4,7 @@ metadata:
   name: k8s-monitoring
   namespace: argocd
 spec:
-  project: default
+  project: monitoring
   sources:
     - repoURL: https://grafana.github.io/helm-charts
       chart: k8s-monitoring
