@@ -11,7 +11,7 @@ spec:
       targetRevision: 4.0.2
       helm:
         valueFiles:
-          - $values/apps/k8s-alloy/values.yaml
+          - $values/apps/alloy/values.yaml
     - repoURL: https://github.com/el7-7/poc-gitops-monitoring.git
       targetRevision: main
       ref: values
