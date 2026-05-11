@@ -4,6 +4,7 @@ metadata:
   name: monitoring-stack
   namespace: argocd
 spec:
+  project: monitoring
   source:
     repoURL: https://github.com/el7-7/poc-gitops-monitoring.git
     path: apps
