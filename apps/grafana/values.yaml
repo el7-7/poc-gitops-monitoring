@@ -1,1 +1,27 @@
+adminUser: admin
+adminPassword: adminadminadmin
 
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hosts:
+    - grafana.test.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Loki
+     type: loki
+     access: proxy
+     orgId: 1
+     url: http://loki-gateway.monitoring.svc.cluster.local:80
+     basicAuth: false
+     isDefault: false
+     version: 1
+     editable: false
