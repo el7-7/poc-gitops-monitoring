@@ -13,8 +13,8 @@ spec:
       targetRevision: 27.23.0
       helm:
         valueFiles:
-        - $values/apps/prometheus/values.yaml # adjust the path to your values file if needed
-    - repoURL: https://github.com/el7-7/k8s-monitoring-argo-test.git # replace it with your GitHub repo address
+        - $values/apps/prometheus/values.yaml
+    - repoURL: https://github.com/el7-7/poc-gitops-monitoring.git
       targetRevision: main
       ref: values
   destination:
