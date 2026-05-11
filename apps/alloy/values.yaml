@@ -1,4 +1,4 @@
-alloy 13124234:
+alloy:
   configMap:
     content: |-
       loki.source.http "argocd_webhook" {
