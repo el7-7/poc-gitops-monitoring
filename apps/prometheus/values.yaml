@@ -1,20 +1,20 @@
-  persistentVolume:
-    enabled: true
-    statefulSetNameOverride: ""
-    accessModes:
-    - ReadWriteOnce
+  # persistentVolume:
+  #   enabled: true
+  #   statefulSetNameOverride: ""
+  #   accessModes:
+  #   - ReadWriteOnce
 
-    labels: {}
-    annotations: {}
-    mountPath: /data
-    size: 1Gi
-    storageClass: "local-storage"
-    volumeName: "prometheus-pv"
-    spec:
-      selector:
-        matchLabels:
-          app.kubernetes.io/name: argocd-repo-server-metrics
-          app: prometheus
-      endpoints:
-      - port: http-metrics
-        path: /metrics
+  #   labels: {}
+  #   annotations: {}
+  #   mountPath: /data
+  #   size: 1Gi
+  #   storageClass: "local-storage"
+  #   volumeName: "prometheus-pv"
+  #   spec:
+  #     selector:
+  #       matchLabels:
+  #         app.kubernetes.io/name: argocd-repo-server-metrics
+  #         app: prometheus
+  #     endpoints:
+  #     - port: http-metrics
+  #       path: /metrics
