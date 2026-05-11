@@ -9,7 +9,7 @@ data:
     token: $slack-token
 
   context: |
-    argocdUrl: https://argocd.example.com
+    argocdUrl: https://af3fc96b30be54df985ca985212f46a5-335117473.eu-west-1.elb.amazonaws.com
 
   template.app-sync-succeeded: |
     slack:
