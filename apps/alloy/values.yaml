@@ -33,7 +33,7 @@ alloy:
       }
 
 cluster:
-  name: kind-test-argo
+  name: cloud-9cei/test/gitops-test
 
 destinations:
   loki:
@@ -57,7 +57,7 @@ clusterEvents:
     - org1
     - ingress-nginx
     - argocd
-    - argocd-deploycancel-test
+    - nginx-slow
 
 podLogs:
   enabled: true
@@ -68,7 +68,7 @@ podLogs:
     - org1
     - ingress-nginx
     - argocd
-    - argocd-deploycancel-test
+    - nginx-slow
 
 nodeLogs:
   enabled: false
